@@ -8,7 +8,7 @@ app = FastAPI()
 origins = [
     "http://localhost:5173",
     "localhost:5173",
-    "https://cinematch-sage-three.vercel.app/"
+    "https://cinematch-sage-three.vercel.app"
 ]
 
 app.add_middleware(
