@@ -8,6 +8,7 @@ import { MdLocalMovies } from "react-icons/md";
 import type { RecommendedMovies } from './types';
 import MovieCard from './components/MovieCard';
 
+const API_URI=import.meta.env.VITE_API_URI
 function App() {
   const [movies, setMovies] = useState<Array<string>>([])
   const [movie, setMovie] = useState("")
@@ -20,7 +21,7 @@ function App() {
   const fetchAllMovies = async () => {
     setLoading(true)
     try {
-      const response = await axios.get("http://localhost:8000/all")
+      const response = await axios.get(`${API_URI}/all`)
       if (response.data?.success) {
         setMovies(response.data.data)
         addToast({
@@ -49,7 +50,7 @@ function App() {
     }
     setIsValid(true)
     try {
-      const response = await axios.get(`http://localhost:8000`, {
+      const response = await axios.get(API_URI, {
         params: { movie }
       })
       console.log(response)
